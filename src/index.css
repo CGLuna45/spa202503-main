@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+/* ===== POKÉMON THEME COLORS ===== */
+:root {
+  --pokemon-red: #EF3B36;
+  --pokemon-blue: #3B5BDB;
+  --pokemon-yellow: #FFCB05;
+  --pokemon-black: #231F20;
+  --pokemon-white: #F5F5F5;
+  --gradient-primary: linear-gradient(135deg, #EF3B36 0%, #FFCB05 100%);
+  --gradient-secondary: linear-gradient(135deg, #3B5BDB 0%, #FFCB05 100%);
+}
+
+html {
+  @apply w-full h-full min-w-0;
+}
+
+#root {
+  @apply min-h-screen min-w-screen flex w-full bg-gradient-to-b from-gray-50 to-gray-100;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  @apply m-2 bg-gradient-to-r from-red-500 to-red-600 text-white py-3 px-8 font-bold text-base rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 border-2 border-red-700;
+}
+
+.btn:hover {
+  @apply from-red-600 to-red-700;
+}
+
+.btn.principal {
+  @apply bg-gradient-to-r from-blue-500 to-blue-600 border-blue-700 hover:from-blue-600 hover:to-blue-700;
+}
+
+.btn.secondary {
+  @apply bg-gradient-to-r from-yellow-400 to-yellow-500 text-black border-yellow-600 hover:from-yellow-500 hover:to-yellow-600;
+}
+
+/* ===== CARDS POKÉMON ===== */
+.pokemon-card {
+  @apply rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-110 transition-all duration-300 cursor-pointer;
+  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+  border: 3px solid var(--pokemon-yellow);
+  position: relative;
+}
+
+.pokemon-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+}
+
+.pokemon-card img {
+  @apply w-full h-32 object-contain p-4 bg-gradient-to-b from-blue-100 to-blue-50;
+}
+
+.pokemon-card h2 {
+  @apply text-center font-bold text-lg text-gray-800 py-2 px-2 capitalize;
+}
+
+/* ===== HERO PANEL ===== */
+.hero-panel {
+  background: linear-gradient(135deg, var(--pokemon-red) 0%, var(--pokemon-blue) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md px-6;
+  background: rgba(255, 255, 255, 0.95);
+  @apply backdrop-blur-md rounded-3xl shadow-2xl p-8;
+  border: 3px solid var(--pokemon-yellow);
+}
+
+.hero-content h2 {
+  @apply text-3xl font-bold text-transparent bg-clip-text;
+  background-image: var(--gradient-primary);
+  @apply mb-4;
+}
+
+.hero-content p {
+  @apply text-gray-700 text-base mb-6;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes pokeBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.poke-bounce {
+  animation: pokeBounce 2s ease-in-out infinite;
+}
+
